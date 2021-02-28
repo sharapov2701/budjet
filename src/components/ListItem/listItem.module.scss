@@ -1,0 +1,40 @@
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px;
+    padding: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+    border-radius: 16px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.iconOuter {
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    padding: 10px;
+    margin-right: 16px;
+}
+
+.icon {
+    fill: white;
+}
+
+.category {
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+.description {
+    font-size: 16px;
+    color: gray;
+}
+
+.sum {
+    font-size: 22px;
+}
