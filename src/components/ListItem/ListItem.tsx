@@ -26,4 +26,5 @@ const ListItem = ({ Icon, color, category, description, sum }: ListItemProps) =>
     )
 }
 
+export type listItem = typeof ListItem
 export default ListItem
