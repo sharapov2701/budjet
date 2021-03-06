@@ -1,30 +1,35 @@
 import React from 'react'
-import styles from './listItem.module.scss'
+import { SvgIconTypeMap } from "@material-ui/core"
+import { OverridableComponent } from "@material-ui/core/OverridableComponent"
+import MuiListItem from '@material-ui/core/ListItem'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import Avatar from '@material-ui/core/Avatar'
+import ListItemText from '@material-ui/core/ListItemText'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 
 interface ListItemProps {
-    Icon: any
+    id: number
+    icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>
     color: string
     category: string
     description?: string
     sum: number
 }
 
-const ListItem = ({ Icon, color, category, description, sum }: ListItemProps) => {
+const ListItem = ({ id, icon: Icon, color, category, description, sum }: ListItemProps) => {
     return (
-        <div className={styles.listItem}>
-            <div className={styles.left}>
-                <div className={styles.iconOuter} style={{ backgroundColor: color }}>
-                    <Icon className={styles.icon}/>
-                </div>
-                <div className={styles.textBlock}>
-                    <p className={styles.category}>{category}</p>
-                    {description && <p className={styles.description}>{description}</p>}
-                </div>
-            </div>
-            <p className={styles.sum}>{sum.toLocaleString()} ₽</p>
-        </div>
+        <MuiListItem>
+            <ListItemAvatar>
+                <Avatar style={{ backgroundColor: color }}>
+                    <Icon />
+                </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={category} secondary={description} />
+            <ListItemSecondaryAction>
+                {sum.toLocaleString()} ₽
+            </ListItemSecondaryAction>
+        </MuiListItem>
     )
 }
 
-export type listItem = typeof ListItem
 export default ListItem
