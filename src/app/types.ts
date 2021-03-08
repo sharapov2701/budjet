@@ -14,3 +14,5 @@ export type Operation = {
     date: string,
     description?: string,
 }
+
+export type GroupedOperations = { [key: string]: Operation[] }

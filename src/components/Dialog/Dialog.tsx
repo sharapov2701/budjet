@@ -12,6 +12,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import useStyles from './styles'
 import { useAppDispatch } from '../../app/hooks'
 import { addOperation } from '../../app/slices/operationsSlice'
+import { DateTime } from 'luxon'
 
 interface DialogProps {
     open: boolean,
@@ -22,7 +23,7 @@ const Dialog = ({ open, onClose }: DialogProps) => {
     const styles = useStyles()
     const [sum, setSum] = useState<number | ''>('')
     const [category, setCategory] = useState<string>('')
-    const [date, setDate] = useState<string | null>(new Date().toLocaleDateString())
+    const [date, setDate] = useState(DateTime.now())
     const [description, setDescription] = useState('')
     const [helperText, setHelperText] = useState('')
     const [error, setError] = useState(false)
@@ -45,15 +46,14 @@ const Dialog = ({ open, onClose }: DialogProps) => {
             setHelperText('')
             dispatch(addOperation(
                 {
-                    sum,
+                    sum: +sum,
                     category,
-                    date,
+                    date: date.toFormat('dd.MM.yyyy'),
                     description
                 }
             ))
             setSum('')
             setCategory('')
-            setDate(null)
             setDescription('')
         }
     }

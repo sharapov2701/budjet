@@ -17,6 +17,7 @@ const Category = ({ name, color, icon: Icon }: CategoryProps) => {
             labelPlacement='bottom'
             control={
                 <Radio
+                    color='primary'
                     icon={
                         <Avatar style={{ backgroundColor: grey[500] }}>
                             <Icon />

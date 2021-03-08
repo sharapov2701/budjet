@@ -7,7 +7,7 @@ import useStyles from './styles'
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 
 interface DatePickerProps {
-    value: string | null
+    value: MaterialUiPickersDate
     onChange: Function
 }
 
@@ -16,7 +16,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
 
     const handleChange = (d: MaterialUiPickersDate, v: string | null | undefined) => {
         if (d && d.isValid) {
-            onChange(d.toLocaleString())
+            onChange(d)
         } else {
             onChange('')
         }
@@ -29,7 +29,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
                 <KeyboardDatePicker
                     value={value}
                     onChange={handleChange}
-                    format="dd.MM.yyyy"
+                    format={'dd.MM.yyyy'}
                 />
             </MuiPickersUtilsProvider>
         </FormControl>

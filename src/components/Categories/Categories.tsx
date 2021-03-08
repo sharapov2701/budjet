@@ -26,7 +26,7 @@ const Categories = ({ value, onChange }: CategoriesProps) => {
         <FormControl component='fieldset' className={styles.root}>
             <FormLabel component='legend'>Категория</FormLabel>
             <RadioGroup className={styles.categories} onChange={handleChange} value={value}>
-                {categories.map(category => <Category {...category}/>)}
+                {categories.map(category => <Category key={category.name} {...category}/>)}
             </RadioGroup>
         </FormControl>
     )
