@@ -6,6 +6,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import Avatar from '@material-ui/core/Avatar'
 import ListItemText from '@material-ui/core/ListItemText'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import useStyles from './styles'
 
 interface ListItemProps {
     id: number
@@ -17,8 +18,10 @@ interface ListItemProps {
 }
 
 const ListItem = ({ id, icon: Icon, color, category, description, sum }: ListItemProps) => {
+    const styles = useStyles()
+    
     return (
-        <MuiListItem>
+        <MuiListItem className={styles.operation}>
             <ListItemAvatar>
                 <Avatar style={{ backgroundColor: color }}>
                     <Icon />

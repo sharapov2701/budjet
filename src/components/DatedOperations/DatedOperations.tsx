@@ -1,6 +1,4 @@
 import React from 'react'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
 import List from '@material-ui/core/List'
 import Operation from '../Operation'
 
@@ -20,19 +18,15 @@ const DatedOperations = ({ date, operations }: DatedOperationsProps) => {
     const categories = useAppSelector(selectCategories)
     
     return (
-        <Card className={styles.card}>
-            <CardContent>
-                <List>
-                    {date}
-                    {operations.map(item => {
-                        const category = categories.filter(c => c.name === item.category)[0]
-                        const { icon, color } = category
-                        
-                        return <Operation key={item.id} {...item} icon={icon} color={color} />
-                    })}
-                </List>
-            </CardContent>
-        </Card>
+        <List className={styles.root}>
+            {date}
+            {operations.map(item => {
+                const category = categories.filter(c => c.name === item.category)[0]
+                const { icon, color } = category
+                
+                return <Operation key={item.id} {...item} icon={icon} color={color} />
+            })}
+        </List>
     )
 }
 
