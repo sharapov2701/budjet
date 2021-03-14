@@ -1,10 +1,10 @@
 import React from 'react'
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 import LuxonUtils from '@date-io/luxon'
 import useStyles from './styles'
-import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 
 interface DatePickerProps {
     value: MaterialUiPickersDate

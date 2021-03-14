@@ -1,9 +1,10 @@
 import React from 'react'
-import SvgIcon from '@material-ui/core/SvgIcon'
+import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 
-const Clothes = () => {
+const Clothes = (props: SvgIconProps) => {
 	return (
 		<SvgIcon
+			{...props}
 			version="1.1"
 			id="Capa_1"
 			xmlns="http://www.w3.org/2000/svg"

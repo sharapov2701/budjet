@@ -1,19 +1,19 @@
 import React from 'react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Radio from '@material-ui/core/Radio'
-import Avatar from '@material-ui/core/Avatar'
 import grey from '@material-ui/core/colors/grey'
+import Avatar from '@material-ui/core/Avatar'
+import Radio from '@material-ui/core/Radio'
 import { Category as CategoryProps } from '../../../app/types'
 import useStyles from './styles'
 
 const Category = ({ name, color, icon: Icon }: CategoryProps) => {
-    const styles = useStyles()
+    const classes = useStyles()
 
     return (
         <FormControlLabel
-            className={styles.category}
+            className={classes.category}
             value={name}
-            label={<span className={styles.name}>{name}</span>}
+            label={<span className={classes.name}>{name}</span>}
             labelPlacement='bottom'
             control={
                 <Radio

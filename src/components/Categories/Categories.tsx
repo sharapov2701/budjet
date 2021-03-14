@@ -1,12 +1,10 @@
 import React from 'react'
 import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
-import Category from './Category'
-
+import FormLabel from '@material-ui/core/FormLabel'
+import { selectCategories } from '../../app/slices/categories'
 import { useAppSelector } from '../../app/hooks'
-import { selectCategories } from '../../app/slices/categoriesSlice'
-
+import Category from './Category'
 import useStyles from './styles'
 
 interface CategoriesProps {
@@ -15,7 +13,7 @@ interface CategoriesProps {
 }
 
 const Categories = ({ value, onChange }: CategoriesProps) => {
-    const styles = useStyles()
+    const classes = useStyles()
     const categories = useAppSelector(selectCategories)
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,9 +21,9 @@ const Categories = ({ value, onChange }: CategoriesProps) => {
     }
 
     return (
-        <FormControl component='fieldset' className={styles.root}>
+        <FormControl component='fieldset' className={classes.root}>
             <FormLabel component='legend'>Категория</FormLabel>
-            <RadioGroup className={styles.categories} onChange={handleChange} value={value}>
+            <RadioGroup className={classes.categories} onChange={handleChange} value={value}>
                 {categories.map(category => <Category key={category.name} {...category}/>)}
             </RadioGroup>
         </FormControl>

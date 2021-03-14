@@ -8,13 +8,13 @@ interface DescriptionFieldProps {
 }
 
 const DescriptionField = ({ value, onChange }: DescriptionFieldProps) => {
-    const styles = useStyles()
+    const classes = useStyles()
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange(event.target.value)
     }
 
     return (
-        <TextField value={value} className={styles.field} onChange={handleChange} label='Примечание' />
+        <TextField value={value} className={classes.field} onChange={handleChange} label='Примечание' />
     )
 }
 

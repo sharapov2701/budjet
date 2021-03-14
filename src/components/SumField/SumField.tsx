@@ -3,18 +3,19 @@ import TextField from '@material-ui/core/TextField'
 import useStyles from './styles'
 
 interface SumFieldProps {
-    value: number | ''
+    value: string
     onChange: Function
 }
 
 const SumField = ({ value, onChange }: SumFieldProps) => {
-    const styles = useStyles()
+    const classes = useStyles()
+    
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange(event.target.value)
     }
 
     return (
-        <TextField value={value} className={styles.field} onChange={handleChange} label='Сумма' autoFocus />
+        <TextField value={value} className={classes.field} onChange={handleChange} label='Сумма' autoFocus />
     )
 }
 

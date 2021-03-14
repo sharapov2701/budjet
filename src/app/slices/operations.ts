@@ -21,7 +21,7 @@ const initialState: Operation[] = [
 
 let id = 2
 
-export const categoriesSlice = createSlice({
+export const operations = createSlice({
   name: 'operations',
   initialState,
   reducers: {
@@ -38,8 +38,8 @@ export const categoriesSlice = createSlice({
   }
 })
 
-export const { addOperation, deleteOperation } = categoriesSlice.actions
+export const { addOperation, deleteOperation } = operations.actions
 
 export const selectOperations = (state: RootState) => Object.values(state.operations)
 
-export default categoriesSlice.reducer
+export default operations.reducer

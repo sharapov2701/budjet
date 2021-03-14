@@ -32,7 +32,7 @@ const initialState: Category[] = [
   },
 ]
 
-export const categoriesSlice = createSlice({
+export const categories = createSlice({
   name: 'categories',
   initialState,
   reducers: {
@@ -46,8 +46,8 @@ export const categoriesSlice = createSlice({
   }
 })
 
-export const { addCategory, deleteCategory } = categoriesSlice.actions
+export const { addCategory, deleteCategory } = categories.actions
 
 export const selectCategories = (state: RootState) => Object.values(state.categories)
 
-export default categoriesSlice.reducer
+export default categories.reducer

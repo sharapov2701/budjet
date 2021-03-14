@@ -1,2 +1,7 @@
 @import './reset';
 @import './breakpoints';
+
+html, body, #root {
+    height: 100%;
+    background-color: #edeef0;
+}
