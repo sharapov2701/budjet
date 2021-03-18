@@ -4,10 +4,12 @@ import grey from '@material-ui/core/colors/grey'
 import Avatar from '@material-ui/core/Avatar'
 import Radio from '@material-ui/core/Radio'
 import { Category as CategoryProps } from '../../../app/types'
+import { getIcon } from '../../../app/utils'
 import useStyles from './styles'
 
-const Category = ({ name, color, icon: Icon }: CategoryProps) => {
+const Category = ({ name, color, icon }: CategoryProps) => {
     const classes = useStyles()
+    const Icon = getIcon(icon)
 
     return (
         <FormControlLabel

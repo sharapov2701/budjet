@@ -1,13 +1,12 @@
-import { SvgIconTypeMap } from "@material-ui/core"
-import { OverridableComponent } from "@material-ui/core/OverridableComponent"
-
-export type Category = {
+export interface Category {
     name: string,
-    icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>,
+    icon: CategoryIcon,
     color: string
 }
 
-export type Operation = {
+export type CategoryIcon = 'DirectionsBusIcon' | 'ShoppingCartIcon' | 'LocalTaxiIcon' | 'Clothes'
+
+export interface Operation {
     id: number,
     sum: number,
     category: string,
@@ -15,4 +14,4 @@ export type Operation = {
     description?: string,
 }
 
-export type GroupedOperations = { [key: string]: Operation[] }
+export interface GroupedOperations { [key: string]: Operation[] }

@@ -3,8 +3,9 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-import { useAppSelector } from '../../app/hooks'
 import { selectCategories } from '../../app/slices/categories'
+import { useAppSelector } from '../../app/hooks'
+import { getIcon } from '../../app/utils'
 import useStyles from './styles'
 
 interface SelectProps {
@@ -29,12 +30,15 @@ export default function SimpleSelect({ value, onChange }: SelectProps) {
                 onChange={handleChange}
                 classes={{ select: classes.option }}
             >
-                {categories.map(({ name, icon: Icon, color }) => (
-                    <MenuItem value={name} key={name} className={classes.option}>
-                        <Icon htmlColor={color} className={classes.icon}/>
-                        <span>{name}</span>
-                    </MenuItem>
-                ))}
+                {categories.map(({ name, icon, color }) => {
+                    const Icon = getIcon(icon)
+                    return (
+                        <MenuItem value={name} key={name} className={classes.option}>
+                            <Icon htmlColor={color} className={classes.icon}/>
+                            <span>{name}</span>
+                        </MenuItem>
+                    )
+                })}
             </Select>
         </FormControl>
     )

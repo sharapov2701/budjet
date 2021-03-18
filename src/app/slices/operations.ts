@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { groupOperationsByDate } from '../utils'
 import { RootState } from '../store'
 import { Operation } from '../types'
 
@@ -32,8 +33,8 @@ export const operations = createSlice({
       })
     },
 
-    deleteOperation: (state: Operation[], action: PayloadAction<number>) => { 
-      state.filter(operation => operation.id !== action.payload)
+    deleteOperation: (state: Operation[], action: PayloadAction<number>) => {
+      return state.filter(operation => operation.id !== action.payload)
     },
   }
 })
@@ -41,5 +42,7 @@ export const operations = createSlice({
 export const { addOperation, deleteOperation } = operations.actions
 
 export const selectOperations = (state: RootState) => Object.values(state.operations)
+
+export const selectDatedOperations = createSelector(selectOperations, groupOperationsByDate)
 
 export default operations.reducer
