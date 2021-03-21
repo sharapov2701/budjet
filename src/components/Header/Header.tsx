@@ -13,7 +13,7 @@ const Header = () => {
 
     return (
         <AppBar position="static">
-            <Container>
+            <Container className={classes.container}>
                 <Toolbar>
                     <IconButton
                         edge="start"
@@ -27,7 +27,6 @@ const Header = () => {
                     <Dropdown>Период</Dropdown>
                     <Dropdown>Категория</Dropdown>
                     <Dropdown>Сумма</Dropdown>
-                    <Dropdown>Поиск</Dropdown>
                     <div className={classes.grow} />
                     <Button variant="contained" color='primary' >
                         Добавить

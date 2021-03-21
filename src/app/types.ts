@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+
 export interface Category {
     name: string,
     icon: CategoryIcon,
@@ -12,6 +14,13 @@ export interface Operation {
     category: string,
     date: string,
     description?: string,
+}
+
+export interface OperationValues {
+    description?: string
+    category: string
+    date: DateTime
+    sum: string
 }
 
 export interface GroupedOperations { [key: string]: Operation[] }

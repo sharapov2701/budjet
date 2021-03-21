@@ -3,9 +3,19 @@ import { Operation, GroupedOperations, CategoryIcon } from './types'
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import LocalTaxiIcon from '@material-ui/icons/LocalTaxi'
+import { DATE_FORMAT } from './constants'
 import { Clothes } from '../icons'
 
-export const sortDates = (a: Operation, b: Operation) => DateTime.fromFormat(b.date, "dd.MM.yyyy").toSeconds() - DateTime.fromFormat(a.date, "dd.MM.yyyy").toSeconds()
+export const sortOperationsByDate = (operations: Operation[]) => {
+    return [...operations].sort((a, b) => (
+        DateTime
+            .fromFormat(b.date, DATE_FORMAT)
+            .toSeconds()
+        - DateTime
+            .fromFormat(a.date, DATE_FORMAT)
+            .toSeconds()
+    ))
+}
 
 export const groupOperationsByDate = (operations: Operation[]): GroupedOperations => {
     const result: GroupedOperations = {}

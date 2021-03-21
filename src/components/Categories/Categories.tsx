@@ -4,7 +4,7 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 import FormLabel from '@material-ui/core/FormLabel'
 import { selectCategories } from '../../app/slices/categories'
 import { useAppSelector } from '../../app/hooks'
-import Category from './Category'
+import Category from '../Category'
 import useStyles from './styles'
 
 interface CategoriesProps {

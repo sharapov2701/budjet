@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles(() => ({
     root: {
-        width: '75%',
+        flex: 1,
     },
 
     list: {

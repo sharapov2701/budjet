@@ -1,5 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { groupOperationsByDate } from '../utils'
+import { groupOperationsByDate, sortOperationsByDate } from '../utils'
 import { RootState } from '../store'
 import { Operation } from '../types'
 
@@ -9,14 +9,14 @@ const initialState: Operation[] = [
     category: 'Одежда',
     description: 'Носки',
     sum: 99,
-    date: '27.01.1996'
+    date: '01.01.2020'
   },
   {
     id: 1,
     category: 'Такси',
     description: 'Было холодно',
     sum: 439,
-    date: '27.01.1996'
+    date: '01.01.2021'
   },
 ]
 
@@ -36,12 +36,22 @@ export const operations = createSlice({
     deleteOperation: (state: Operation[], action: PayloadAction<number>) => {
       return state.filter(operation => operation.id !== action.payload)
     },
+
+    editOperation: (state: Operation[], action: PayloadAction<Operation>) => {
+      const { id, ...updates } = action.payload
+      const operation = state.findIndex(o => o.id === id)
+      if (operation) {
+        state[operation] = {...state[operation], ...updates}
+      }
+    },
   }
 })
 
-export const { addOperation, deleteOperation } = operations.actions
+export const { addOperation, deleteOperation, editOperation } = operations.actions
 
-export const selectOperations = (state: RootState) => Object.values(state.operations)
+export const selectUnsortedOperations = (state: RootState) => state.operations
+
+export const selectOperations = createSelector(selectUnsortedOperations, sortOperationsByDate)
 
 export const selectDatedOperations = createSelector(selectOperations, groupOperationsByDate)
 

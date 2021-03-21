@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from '../../components/Layout'
 import OperationsList from '../../components/OperationsList'
-import FormAddOperation from '../../components/FormAddOperation'
+import OperationAdd from '../../components/OperationAdd'
 
 const History = () => (
   <Layout>
-    <FormAddOperation />
+    <OperationAdd />
     <OperationsList />
   </Layout>
 )

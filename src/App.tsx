@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route } from "react-router-dom"
-import History from './views/History'
-import Income from './views/Income'
-import Expenses from './views/Expenses'
+import History from './pages/History'
+import Income from './pages/Income'
+import Expenses from './pages/Expenses'
 
 const App = () => {
   return (

@@ -4,6 +4,7 @@ import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import LuxonUtils from '@date-io/luxon'
+import { DATE_FORMAT } from '../../app/constants'
 import useStyles from './styles'
 
 interface DatePickerProps {
@@ -29,7 +30,7 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
                 <KeyboardDatePicker
                     value={value}
                     onChange={handleChange}
-                    format={'dd.MM.yyyy'}
+                    format={DATE_FORMAT}
                 />
             </MuiPickersUtilsProvider>
         </FormControl>

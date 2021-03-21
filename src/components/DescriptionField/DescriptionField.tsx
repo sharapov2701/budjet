@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField'
 import useStyles from './styles'
 
 interface DescriptionFieldProps {
-    value: string
+    value: string | undefined
     onChange: Function
 }
 

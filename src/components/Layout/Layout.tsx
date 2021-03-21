@@ -9,7 +9,7 @@ const Layout: FunctionComponent = ({ children }) => {
     return (
         <Fragment>
             <Header />
-            <Container>
+            <Container className={classes.container}>
                 <main className={classes.main}>
                     {children}
                 </main>
