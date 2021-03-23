@@ -8,6 +8,8 @@ import useStyles from './styles'
 const OperationsList = () => {
     const classes = useStyles()
     const operations = useAppSelector(selectDatedOperations)
+    const op = useAppSelector(state => state.firebase.ordered)
+    console.log(op)
 
     return (
         <div className={classes.root}>
