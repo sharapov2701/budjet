@@ -1,13 +1,15 @@
 import React from 'react'
-import { useFirebase } from 'react-redux-firebase'
-import OperationForm from '../OperationForm'
+import { addOperation } from '../../app/slices/operations'
+import { useAppDispatch } from '../../app/hooks'
 import { Operation } from '../../app/types'
+import OperationForm from '../OperationForm'
 import useStyles from './styles'
 
 const OperationAdd = () => {
     const classes = useStyles()
-    const firebase = useFirebase()
-    const handleSubmit = (values: Omit<Operation, 'id'>) => firebase.push('operations', values)
+    const dispatch = useAppDispatch()
+
+    const handleSubmit = (values: Omit<Operation, 'id'>) => dispatch(addOperation(values))
     
     return (
         <div className={classes.root}>

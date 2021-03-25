@@ -1,13 +1,21 @@
 import React from 'react'
-import { useFirebase } from 'react-redux-firebase'
 import GoogleButton from 'react-google-button'
 import Layout from '../../components/Layout'
+import firebase, { auth } from '../../app/firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { Redirect } from 'react-router-dom'
 
 const Auth = () => {
-  const firebase = useFirebase()
-  const loginWithGoogle = () => firebase.login({ provider: 'google', type: 'popup' })
+  const [user] = useAuthState(auth)
+  
+  const loginWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider()
+    auth.signInWithPopup(provider)
+  }
 
   return (
+    user ?
+    <Redirect to={{ pathname: "/" }}/> : 
     <Layout>
       <h2>Auth</h2>
       <GoogleButton onClick={loginWithGoogle}/>

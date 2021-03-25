@@ -5,11 +5,13 @@ import Toolbar from '@material-ui/core/Toolbar'
 import MenuIcon from '@material-ui/icons/Menu'
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
+import { auth } from '../../app/firebase'
 import Dropdown from '../Dropdown'
 import useStyles from './styles'
 
 const Header = () => {
     const classes = useStyles()
+    const logout = () => auth.signOut()
 
     return (
         <AppBar position="static">
@@ -28,8 +30,8 @@ const Header = () => {
                     <Dropdown>Категория</Dropdown>
                     <Dropdown>Сумма</Dropdown>
                     <div className={classes.grow} />
-                    <Button variant="contained" color='primary' >
-                        Добавить
+                    <Button variant="contained" color='primary' onClick={logout}>
+                        Выйти
                     </Button>
                 </Toolbar>
             </Container>
