@@ -4,14 +4,10 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 
-interface DropdownProps {
-    children: string
-}
+const Dropdown = ({ children }) => {
+    const [anchorEl, setAnchorEl] = React.useState(null)
 
-const Dropdown = ({ children }: DropdownProps) => {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget)
     }
   

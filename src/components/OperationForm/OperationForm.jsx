@@ -2,24 +2,11 @@ import React, { useReducer } from 'react'
 import Button from '@material-ui/core/Button'
 import { DateTime } from 'luxon'
 import DescriptionField from '../DescriptionField'
-import { OperationValues } from '../../app/types'
 import { DATE_FORMAT } from '../../app/constants'
 import DatePicker from '../DatePicker'
 import SumField from '../SumField'
 import Select from '../Select'
 import useStyles from './styles'
-
-interface Action {
-    type: string,
-    payload: unknown
-}
-
-interface OperationFormProps {
-    onSubmit: Function
-    title: string
-    buttonText: string
-    defaultValues?: OperationValues
-}
 
 const initialValues = {
     sum: '',
@@ -28,16 +15,16 @@ const initialValues = {
     description: ''
 }
 
-const OperationForm = ({ onSubmit, title, buttonText, defaultValues }: OperationFormProps) => {
+const OperationForm = ({ onSubmit, title, buttonText, defaultValues }) => {
     const classes = useStyles()
-    const reducer = (state: OperationValues, { type, payload }: Action): OperationValues => ({ ...state, [type]: payload })
+    const reducer = (state, { type, payload }) => ({ ...state, [type]: payload })
     const [state, dispatch] = useReducer(reducer, defaultValues || initialValues)
-    const setSum = (value: string) => dispatch({ type: 'sum', payload: value})
-    const setDate = (value: DateTime) => dispatch({ type: 'date', payload: value})
-    const setCategory = (value: string) => dispatch({ type: 'category', payload: value})
-    const setDescription = (value: string) => dispatch({ type: 'description', payload: value})
+    const setSum = (value) => dispatch({ type: 'sum', payload: value})
+    const setDate = (value) => dispatch({ type: 'date', payload: value})
+    const setCategory = (value) => dispatch({ type: 'category', payload: value})
+    const setDescription = (value) => dispatch({ type: 'description', payload: value})
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
 
         if (state.sum && state.category && state.date) {

@@ -1,21 +1,15 @@
 import React from 'react'
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
-import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import LuxonUtils from '@date-io/luxon'
 import { DATE_FORMAT } from '../../app/constants'
 import useStyles from './styles'
 
-interface DatePickerProps {
-    value: MaterialUiPickersDate
-    onChange: Function
-}
-
-const DatePicker = ({ value, onChange }: DatePickerProps) => {
+const DatePicker = ({ value, onChange }) => {
     const styles = useStyles()
 
-    const handleChange = (d: MaterialUiPickersDate, v: string | null | undefined) => {
+    const handleChange = (d) => {
         if (d && d.isValid) {
             onChange(d)
         } else {

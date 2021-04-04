@@ -2,14 +2,9 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import useStyles from './styles'
 
-interface DescriptionFieldProps {
-    value: string | undefined
-    onChange: Function
-}
-
-const DescriptionField = ({ value, onChange }: DescriptionFieldProps) => {
+const DescriptionField = ({ value, onChange }) => {
     const classes = useStyles()
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event) => {
         onChange(event.target.value)
     }
 

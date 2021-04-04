@@ -3,24 +3,14 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-import { selectCategories } from '../../app/slices/categories'
-import { useAppSelector } from '../../app/hooks'
+import categories from '../../app/categories'
 import { getIcon } from '../../app/utils'
 import useStyles from './styles'
 
-interface SelectProps {
-    value: string
-    onChange: Function
-}
-
-export default function SimpleSelect({ value, onChange }: SelectProps) {
+export default function SimpleSelect({ value, onChange }) {
     const classes = useStyles()
-    const categories = useAppSelector(selectCategories)
 
-
-    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        onChange(event.target.value as string);
-    };
+    const handleChange = (event) => onChange(event.target.value);
 
     return (
         <FormControl className={classes.formControl}>
@@ -30,7 +20,7 @@ export default function SimpleSelect({ value, onChange }: SelectProps) {
                 onChange={handleChange}
                 classes={{ select: classes.option }}
             >
-                {categories.map(({ name, icon, color }) => {
+                {Object.values(categories).map(({ name, icon, color }) => {
                     const Icon = getIcon(icon)
                     return (
                         <MenuItem value={name} key={name} className={classes.option}>

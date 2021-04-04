@@ -1,12 +1,11 @@
 import { DateTime } from 'luxon'
-import { Operation, GroupedOperations, CategoryIcon } from './types'
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import LocalTaxiIcon from '@material-ui/icons/LocalTaxi'
 import { DATE_FORMAT } from './constants'
 import { Clothes } from '../icons'
 
-export const sortOperationsByDate = (operations: Operation[]) => {
+export const sortOperationsByDate = (operations) => {
     return [...operations].sort((a, b) => (
         DateTime
             .fromFormat(b.date, DATE_FORMAT)
@@ -17,8 +16,8 @@ export const sortOperationsByDate = (operations: Operation[]) => {
     ))
 }
 
-export const groupOperationsByDate = (operations: Operation[]): GroupedOperations => {
-    const result: GroupedOperations = {}
+export const groupOperationsByDate = (operations) => {
+    const result = {}
     operations.forEach(operation => {
         if (result[operation.date]) {
             result[operation.date] = [...result[operation.date], operation]
@@ -29,7 +28,7 @@ export const groupOperationsByDate = (operations: Operation[]): GroupedOperation
     return result
 }
 
-export const getIcon = (icon: CategoryIcon) => {
+export const getIcon = (icon) => {
     switch (icon) {
         case 'DirectionsBusIcon':
             return DirectionsBusIcon

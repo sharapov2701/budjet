@@ -1,15 +1,15 @@
 import React from 'react'
-import { addOperation } from '../../app/slices/operations'
-import { useAppDispatch } from '../../app/hooks'
-import { Operation } from '../../app/types'
 import OperationForm from '../OperationForm'
+import { firestore } from '../../app/firebase'
 import useStyles from './styles'
 
 const OperationAdd = () => {
     const classes = useStyles()
-    const dispatch = useAppDispatch()
+    const operationsRef = firestore.collection('operations')
 
-    const handleSubmit = (values: Omit<Operation, 'id'>) => dispatch(addOperation(values))
+    const handleSubmit = async (values) => {
+        await operationsRef.add(values)
+    }
     
     return (
         <div className={classes.root}>

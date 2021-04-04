@@ -6,30 +6,15 @@ import MuiListItem from '@material-ui/core/ListItem'
 import Delete from '@material-ui/icons/Delete'
 import Dialog from '@material-ui/core/Dialog'
 import Avatar from '@material-ui/core/Avatar'
-import { DateTime } from 'luxon'
-import { CategoryIcon, OperationValues } from '../../app/types'
-import { deleteOperation } from '../../app/slices/operations'
-import { useAppDispatch } from '../../app/hooks'
 import OperationEdit from '../OperationEdit'
 import { getIcon } from '../../app/utils'
 import useStyles from './styles'
 
-interface ListItemProps {
-    id: number
-    icon: CategoryIcon
-    color: string
-    category: string
-    description?: string
-    sum: number
-    date: DateTime
-}
-
-const ListItem = ({ id, icon, color, category, description, sum, date }: ListItemProps) => {
+const ListItem = ({ id, icon, color, category, description, sum, date }) => {
     const classes = useStyles()
-    const dispatch = useAppDispatch()
     const Icon = getIcon(icon)
     const [open, setOpen] = useState(false)
-    const values: OperationValues = {
+    const values = {
         sum: sum.toString(),
         date,
         category,
@@ -38,6 +23,7 @@ const ListItem = ({ id, icon, color, category, description, sum, date }: ListIte
 
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const deleteOperation = (id) => {}
     
     return (
         <Fragment>
@@ -53,7 +39,7 @@ const ListItem = ({ id, icon, color, category, description, sum, date }: ListIte
                 <ListItemText primary={category} secondary={description} />
                 <ListItemSecondaryAction className={classes.right}>
                     <span>{sum.toLocaleString()} ₽</span>
-                    <Delete className={classes.delete} onClick={() => dispatch(deleteOperation(id))}/>
+                    <Delete className={classes.delete} onClick={() => deleteOperation(id)}/>
                 </ListItemSecondaryAction>
             </MuiListItem>
         </Fragment>

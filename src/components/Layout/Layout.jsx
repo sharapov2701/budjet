@@ -1,9 +1,9 @@
-import React, { Fragment, FunctionComponent } from 'react'
+import React, { Fragment } from 'react'
 import Container from '@material-ui/core/Container'
 import Header from '../Header'
 import useStyles from './styles'
 
-const Layout: FunctionComponent = ({ children }) => {
+const Layout = ({ children }) => {
     const classes = useStyles()
 
     return (

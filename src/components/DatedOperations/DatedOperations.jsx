@@ -1,27 +1,19 @@
 import React from 'react'
 import List from '@material-ui/core/List'
 import { DateTime } from 'luxon'
-import { selectCategories } from '../../app/slices/categories'
-import { Operation as OperationType } from '../../app/types'
 import { DATE_FORMAT } from '../../app/constants'
-import { useAppSelector } from '../../app/hooks'
+import categories from '../../app/categories'
 import Operation from '../Operation'
 import useStyles from './styles'
 
-interface DatedOperationsProps {
-    date: string
-    operations: OperationType[]
-}
-
-const DatedOperations = ({ date, operations }: DatedOperationsProps) => {
+const DatedOperations = ({ date, operations }) => {
     const classes = useStyles()
-    const categories = useAppSelector(selectCategories)
     
     return (
         <List className={classes.root}>
             <span className={classes.date}>{date}</span>
             {operations.map(item => {
-                const category = categories.filter(c => c.name === item.category)[0]
+                const category = categories[item.category]
                 const { icon, color } = category
                 
                 return (
